@@ -674,7 +674,7 @@ R is a powerful tool in the workflow of the open scientist. In conjunction with 
 ### Chapter resources
 
 -   Data for the example analysis: <https://doi.org/10.1371/journal.pone.0211618.s002>
--   Github repository of this chapter, including Quarto document of the example analysis. \*\*\*\*ANDY TO SET UP\*\*\*\*
+-   Github repository of this chapter, including Quarto document of the example analysis: https://github.com/profandyfield/chrmssbs
 -   Video tutorials to get started with R, RStudio and Quarto: <https://youtube.com/playlist?list=PLEzw67WWDg80-fT1hq2IZf7D62tRmKy8f&si=HHmxuWt-J5Qu-VqO>
 
 ### Templates
