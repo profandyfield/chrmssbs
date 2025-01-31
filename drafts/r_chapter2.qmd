@@ -1,0 +1,265 @@
+------------------------------------------------------------------------
+
+------------------------------------------------------------------------
+
+```{r}
+#| label: Read in Data
+
+library(here)
+library(readxl)
+
+humorincog <- read_excel(here("data/pone.0211618.s002.xlsx"))
+
+# replicate correlation in Table 3 between Negative affectivity (naff) and General Positive Aspects (pos3)
+# Reported values: -0.26 (0.011)
+cor1 <-cor.test(humorincog$pos3, humorincog$naff)
+cor1$estimate 
+cor1$p.value
+
+# replicate linear regression coefficient Table 3
+# The six eligible reappraisal sub-strategies (three positive  reinterpretation strategies (pos3, pos7, pos8), 
+# three de-emphasising strategies (rel10, rel11, rel14)) 
+# were used as predictors of Antagonism (anta)
+# Estimated Coefficient of Alternative Explanation (rel14)
+# Reported Values: 0.12 (0.15)
+
+anta_reg <- lm(data=humorincog, anta~pos3+pos7+pos8+rel10+rel11+rel14)
+summary(anta_reg)
+```
+
+## What is R
+
+## Why use R?
+
+-   Stuff from <https://www.discovr.rocks/lover/>
+-   Usage stats (Rexer analytics' surveys etc)
+-   Reproducibility
+-   Cutting edge
+
+## Using R
+
+## Example analysis
+
+To demonstrate R's extensive analytic capability we use data from the
+study conducted by Perchtold et. al. (2019), “Humorous cognitive
+reappraisal: More benign humour and less "dark" humour is affiliated
+with more adaptive cognitive reappraisal strategies.” In this study 95
+qualified participants aged 17 to 35 years completed the Reappraisal
+Inventiveness Test (RIT), humorous adaptation, and questionnaires.
+Participants were confronted with 4 anxiety-provoking situations and
+were asked to write as many humorous ways as they could think of to
+diminish anxiety. Each of the humorous explanations (or reappraisals)
+was classified into RIT categories; which were further classified into
+either positive reinterpretation strategy (situation-focused
+reappraisal) or a de-emphasizing strategy (self-focused reappraisal).
+Participants also completed the Center for Epidemiology Studies
+depression scale (CES-D, variable name ads), resulting in an overall
+score from 1 to 48, with higher scores indicating a greater number of
+self-reported depressive experiences.
+
+### One-Sample T-Test
+
+A first analysis determines whether the participants do not show
+depressive symptoms on average which is reflected as a CES-D score of 15
+or lower (Stein 2014). The threshold of 15 was chosen because a score of
+16 or is interpreted as displaying depressive symptoms. This hypothesis
+can be tested using a one-sample t-test.
+
+H0: true mean CES-D is equal to 15
+
+H1: true mean CES-D is less than 15
+
+In R we perform a t-test of this hypothesis using the t.test() function
+which is available in base R. Mu is the constant which is compared to
+the sample mean and in this case mu is equal to 15. The alternative
+hypothesis is set to "less" to perform a one-tailed test. The object
+produced from the t-test (called depression) is printed.
+
+```{r}
+#| label: One-sample t-test
+
+depression <- t.test(x=humorincog$ads, mu=15, alternative="less" )
+depression
+```
+
+Upon examination of the output the p-value for this test is 0.7502 which
+is greater than 𝛼=0.05. We have insufficient evidence to reject the null
+hypothesis and the decision is to Fail to Reject the null hypothesis. We
+can conclude at the 5% level of significance that the true mean CES-D
+value is not less than 15.
+
+### Correlation Coefficient
+
+In two-way comparisons Perchtold and colleagues correlate self-reported
+depressive experiences to each of the three sub-strategies within the
+positive reinterpretation strategy (general positive aspects (pos3),
+worst-case comparison (pos7), disadvantage as advantage (pos8)) and each
+of the three sub-strategies within the de-emphasizing category
+(alternative explanation (rel10), trivializing the problem (rel11),
+handing over responsibility (rel14)). (Perchtold Table 2). The columns
+of interest for the analysis are extracted and then a simple correlation
+matrix can be created using the cor() function. The round() function is
+wrapped around the correlations to display 3 digits after the decimal
+and streamline the display. The default method is Pearson, and the
+Kendall and Spearman correlations can be produced using method="kendall"
+or "spearman".
+
+```{r}
+#| label: Correlation
+
+humorincog_c<-humorincog[c("ads","pos3","pos7","pos8","rel10","rel11","rel14")]
+round(cor(humorincog_c),3)
+
+```
+
+Standard errors (or p-values) for the correlations can be produced for
+each pair using the corr.test() function (as in Perchtold Table 2).
+
+```{r}
+#| label: Correlation with P value
+
+library(psych)
+
+ads_corr <- corr.test(humorincog_c,adjust="none")
+ads_corr
+
+```
+
+The object ads_corr contains the correlation matrix, followed by the
+sample size and the unadjusted p-values of the correlations.
+
+```         
+{r}
+```
+
+### Multiple Linear Regression
+
+Following Perchtold et al. (2019) and using multivariate linear
+regression, we can test whether three sub-strategies within the positive
+reinterpretation strategy (general positive aspects (pos3), worst-case
+comparison (pos7), disadvantage as advantage (pos8)) and three
+sub-strategies within the de-emphasizing category (alternative
+explanation (rel10), trivializing the problem (rel11), handing over
+responsibility (rel14)) are predictive of self-reported depressive
+experiences measured via the CES-D depression scale. \[These results are
+reported in Table 2 of Perchtold.\]
+
+Several of the research questions that can be answered using multiple
+linear regression:
+
+1.  Do *any* of the six reappraisal strategies have a linear
+    relationship to self-reported depressive experience? (overall test
+    of the model)
+
+2.  Which of the six strategies explain variation in self-reported
+    depressive experience? (test the estimated parameter for each
+    strategy = 0)
+
+3.  What is the size of the relationship between a specific strategy and
+    self-reported depressive experience? (confidence interval for a
+    parameter)
+
+4.  What is the predicted CES-D depression score for a person with a
+    given set of the six strategies? (prediction interval)
+
+In R we answer these questions by estimating a linear regression using
+the lm( ) function. We designate the data frame which is stored in
+object humorincog and specify the model using a formula with the
+dependent variable on the left side of a tilde (\~) and the explanatory
+variables on the right side of the tilde, separated by plus (+) signs.
+
+ads \~ pos3+pos7+pos8+rel10+rel11+rel14
+
+The estimated model can be written to an object, called ads_reg in this
+case, and the model results are processed using the summary( ) function.
+
+```{r}
+#| label: Multiple Regression
+
+ads_reg <- lm(data=humorincog, ads~pos3+pos7+pos8+rel10+rel11+rel14)
+summary(ads_reg)
+
+
+```
+
+The regression output provides answers to our research questions. \[Too
+much detail? If not, each would be answered using the values in the
+output\]
+
+1.  Do *any* of the six reappraisal strategies have a linear
+    relationship to self-reported depressive experience? (overall test
+    of the model)
+
+2.  Which of the six strategies explain variation in self-reported
+    depressive experience? (test the estimated parameter for each
+    strategy = 0)
+
+3.  What is the size of the relationship between a specific strategy and
+    self-reported depressive experience? (confidence interval for a
+    parameter)
+
+4.  What is the predicted CES-D depression score for a person with a
+    given set of the six strategies? (prediction interval)
+
+Producing Tables of Output
+
+Often we would like to produce well-formatted tables of regression
+output for reporting or publication, and packages such as broom() make
+this process much more efficient. The tidy() function standardizes the
+output from the model and the kable() function generates a table of the
+contents.
+
+```{r}
+#| label: Regression tables 
+
+library(knitr)
+library(broom)
+tidy(ads_reg) |> kable(digits = 2)
+```
+
+Classes and Lists
+
+All of the statistical tests above produce useful data elements that are
+unseen in the output that is typically produced by printing the object,
+by using summary(), or by running the object through tidy() and broom().
+For example, the output produced in an object created by the lm()
+function includes useful data such as all of the residuals and fitted
+values. These do not need to be calculated; you just need to learn how
+to extract them.
+
+The first step is to write your output to an object. The object will
+have standardized names for variables and a standardized format. It will
+be stored in what is called a *list* object which is an object that
+contains objects of different types. Where a data frame or tibble has to
+have a fixed number of rows across all columns, a list is not limited to
+that structure. Within the list an object can be a character vector of
+length 1 or a numeric array with dimensions nxk.
+
+All lists produced by lm() include the following objects:\[usful?\]
+
+In R, each object created by lm() in the structure listed above is
+designated as a class "lm" object. Classes allow creation of a template
+to store information, and just as importantly, to extract information.
+Every "lm" class object will contain residuals, fitted values, etc...
+and users can write functions or packages to manipulate data produced as
+a class-\[insert class name\] object such as a class-lm object. Packages
+such as broom are equipped to check the class of an object and "tidy" it
+to an even more standardized format. But we don't need to tell broom
+what class an object is, the object itself provides that information.
+
+\[How classes are useful to the R user\]
+
+## References
+
+Perchtold CM, Weiss EM, Rominger C, Feyaerts K, Ruch W, Fink A, et al.
+(2019) Humorous cognitive reappraisal: More benign humour and less
+"dark" humour is affiliated with more adaptive cognitive reappraisal
+strategies. PLoS ONE 14(1): e0211618.
+<https://doi.org/10.1371/journal.pone.0211618>
+
+Stein J, Luppa M, Mahnke J, Weyerer S, Schomerus G, Riedel-Heller SG.
+Depressionsscreening am Telefon mittels der Allgemeinen Depressionsskala
+(ADS) \[Screening for depression by telephone using the German version
+of the Center for Epidemiological Studies Depression Scale (CES-D)\].
+Psychiatr Prax. 2014 Apr;41(3):135-41. German. doi:
+10.1055/s-0033-1343176. Epub 2013 May 13. PMID: 23670784.

@@ -1,0 +1,1058 @@
+---
+title: "R"
+shorttitle: "R"
+author:
+  - name: Andy P. Field
+    corresponding: true
+    orcid: 0000-0003-3306-4695
+    email: andy.field@sussex
+    affiliations:
+      - name: University of Sussex
+        department: School of Psychology
+        address: Falmer
+        city: Brighton
+        region: East Sussex
+        postal-code: BN1 9QH
+  - name: Teresa B. Gibson
+    corresponding: false
+    orcid: 0000-0002-5853-7447
+    email: tbgsma@rit.edu
+    affiliations:
+      - name: Rochester Institute of Technology
+        department: xxxx
+        address: xxx
+        city: New York
+        region: NY
+        postal-code: xxxxx
+abstract: "This chapter ......"
+keywords: [R, keyword2]
+author-note:
+  disclosures:
+    conflict of interest: The author has no conflict of interest to declare.
+format:
+  apaquarto-docx: default
+  apaquarto-html: default
+  apaquarto-pdf: default
+  apaquarto-typst: default
+bibliography: references.yaml
+---
+
+```         
+The handbook is geared towards upper-level graduate students and faculty. Think of it as an encyclopedia of research methods and stats. There will certainly be chapters that are useful for undergraduates as well, but generally we are assuming that our readers have a decent amount of knowledge already. Importantly, there are many different disciplines represented in this volume. We value this and will do our best to focus your chapter on the broader disciplines within social and behavioral science. This means that the chapter will ideally include diverse examples and will be useful to a variety of disciplines. One of the most important parts of this is readability and applicability. Getting bogged down in technical details will not likely appeal to our reader. We will do what we can to ensure each chapter maintains the intended focus.
+Regarding format, we use APA 7th, American English, and do not include footnotes. Aside from these things, we are happy for you to decide how you want to present the information. As mentioned, we are aiming at 10,000 words per chapter ALL INCLUSIVE. This includes a title page, abstract of ~150 words, references, and any table/figures. Regarding figures, CUP requires that they have full permission to publish them and that they are at least 300 dpi. I’m not an imaging expert, but several programs should tell you what dpi the image is. Please make sure they are “big” enough.
+```
+
+R [@rcoreteam2024] is a powerful open source software environment for
+statistical computing and graphics released in 2000 (after 8 years of
+development). Much of this strength comes from the fact that the core
+application (so called 'base R') can be extended by installing and
+loading 'packages' developed by individuals and organisations. Most
+packages are stored on a central repository managed by the R core
+development team known as CRAN (Comprehensive R Archive Network), but
+many authors develop their packages using GitHub making it possible to
+install many packages directly from the GitHub website. At the time of
+writing there are 21,939 packages on CRAN, which demonstrates the
+vastness of the ecosystem. Whatever you want to do with your data, the
+chances are someone has written a package that enables you to do it.
+
+Unlike many popular applications for data processing, visualisation and
+statistical analysis (e.g., IBM SPSS Statistics, JASP, Jamovi, Minitab),
+which rely on a point-and-click graphical user interface (GUI), R is
+script-based. This has some advantages (which we will come onto), but
+also means that R has a relatively steep learning curve for those most
+comfortably with GUI-based software. Why then, should you climb that
+educational mountain?
+
+For an academic, perhaps the most compelling reason to learn R is that
+it fits seamlessly with a workflow that promotes open science and
+reproducibility [@munafò2017], which is an increasingly vital part of
+the scientific process. Point-and-click software for data processing and
+statistical modelling are inherently not reproducible: there is no
+obvious record of what has been done and mistakes are not traceable
+[@simons2019].[^1] As we shall see when we discuss workflow, it is
+possible to create academic papers and reports that embed the analysis
+code meaning that anyone can reproduce an entire academic paper with a
+click of a button. R integrates seamlessly with GitHub, which in turn
+integrates with popular open science repositories such as the Open
+Science Framework (https://osf.io/), making it convenient to create
+open, reproducible scientific projects.
+
+[^1]: This is a simplification because, for example, IBM SPSS Statistics
+    stores a journal of activity using a syntax language, linking a
+    particular part of that file to a particular analysis is, at best,
+    tricky. More recently IBM SPSS Statistics has introduced a workbook
+    file that integrates translates point and click activity into syntax
+    that is stored along with output. Although this vastly improves
+    reproducibility it is still not possible to produce integrated,
+    formatted reports.
+
+A second reason for investing time in R is that by being open source, it
+has a wider range of tools than most proprietary software and is able to
+keep pace with the rapidly changing world of data science and
+statistics. For example, structural equation models typically require
+specialist proprietary software such as AMOS and MPLus, whereas these
+models are handled within R by importing packages such as `lavaan`
+[@lavaan]. Also, there are examples of widely-used statistical methods
+that are not readily available in proprietary statistics software such
+as robust estimation, Bayesian estimation, and network analysis. Other
+applications such as JASP can, for example, estimate Bayesian model but
+it uses R under the hood (as does jamovi) so the range of tools
+available depends on the developers choices about what to implement. If
+you learn R, you make those decisions.
+
+Finally, for those with secret desires to have an exit strategy from the
+academy, R is also a useful transferable skill. According to a 2020
+survey of 579 analytic professionals from 71 countries, R and Python
+(another programming language) are by far the most widely used. Around a
+quarter of consultants and corporate analysts list R as their primary
+tool (joint highest with Python), in academia it is 41% (compared to 10%
+for IBM SPSS Statistics) and for non-profits it is 48%
+[@rexeranalytics2020]. Although the estimate for academia is likely
+inflated because R-users would more likely be aware of and respond to
+this sort of survey, the point remains that R is a widely used both
+inside and outside of academia.
+
+None of these comparisons are to belittle other software. Every tool has
+it strengths and weaknesses. In the case of R, the great strength of the
+diversity of tools available is also a weakness in that the ecosystem
+can be overwhelming. Also, there are often multiple ways to achieve the
+same goal, which can make finding relevant information difficult in the
+beginning. Also, the ecosystem is changing rapidly [@staples2023]
+meaning that the learning never really stops.
+
+## Using R
+
+### Workflow
+
+R exists as a standalone application that you instruct to do the things
+you want by typing commands at a prompt. However, if you want to make
+your life a lot more pleasant then we recommend using R from within the
+RStudio [@rstudioteam2016] integrated development environment (IDE); if
+you want to create beautiful reports or submission-ready manuscripts
+from within RStudio then you need to install something called quarto
+[@quarto]. Therefore, before you start your R journey, install these
+three applications (see Resources for the URLs):
+
+-   R
+-   RStudio
+-   Quarto
+
+@fig-rrstudioquarto shows how these three applications interact. From a
+user perspective you only ever use RStudio because R and quarto work
+behind the scenes. Within RStudio you create a new quarto document,
+which is like a document from your favourite word processor except that
+you can insert so-called *code chunks* into which you type R code.
+@fig-rrstudioquarto shows a quarto document on the left hand side;
+notice that there is a heading followed by a paragraph of text, under
+which is a grey box containing some code.
+
+To create a finished report, the document must be processed (or
+*rendered*) by clicking a button. When a quarto document is rendered the
+text is processed by quarto to apply formatting and generate headings,
+hyperlinks and citations, whereas anything in a code chunk is processed
+by R. In @fig-rrstudioquarto (right hand side) note that, after
+rendering, the textual paragraph has some hyperlinks and formatting
+applied by quarto, and the code chunk has been processed by R to create
+a table (and the subsequent code chunk creates a plot).
+
+![How R, RStudio and quarto
+interact](images/r_rstudio_quarto_2025.png){#fig-rrstudioquarto}
+
+Quarto documents can be rendered into an html file (the most convenient)
+but for scientific manuscripts you can also render to a pdf (but you
+need to have LaTeX installed) or Microsoft Word file. Before rendering,
+it is also possible to execute any code chunks from within your quarto
+document allowing you to work on and check code without needing to
+render the entire document.
+
+We can give only the briefest overview of the incredible power of
+RStudio, R and quarto and suffice it to say there's an enormous amount
+to learn that we can't possible cover. However, the resources section
+provides some video walkthroughs and there is more detail in
+@fielddsr22026.
+
+### Project files
+
+The single most useful thing you can do when working with R is to use an
+RStudio project and organise it sensibly [@fielddsr22026]. An RStudio
+project is a folder containing a special file with the extension
+`.Rproj` that stores information about the containing folder and your
+environment. Most important, it sets the working directory to be the
+folder containing the project file, which means that accessing the files
+becomes a lot more straightforward than if you don't use an RStudio
+project. Provided you have stored the files you need for your project
+within your project folder, you will be able to access it using only its
+file name (because R will automatically look for the file in your
+project folder).
+
+In terms of organising the project folder, @fielddsr22026 recommends at
+a minimum having a folder called `data` for any data files, and one
+called something like `quarto` or `docs` for your quarto documents.
+Different projects will have different needs though, so may need other
+folders too. Space prevents a detailed explanation of how to set up a
+project, but the resources section provides a video walkthrough and
+there is more detail in @fielddsr22026.
+
+### Packages and functions
+
+Some functions are built into R, but others will be bundled into a
+package (see earlier). We install packages by executing
+
+```{r}
+#| eval: false
+ 
+install.packages("name_of_package")
+```
+
+replacing "name_of_package" with the name of the package. This should be
+done outside of your quarto document. Installing a package puts a copy
+of it on your computer so you only need to do it once or until you
+update R. However, to use a package you have to load it by including
+
+```{r}
+#| eval: false
+ 
+library(name_of_package)
+```
+
+in a code chunk (we recommend your first code chunk) within your quarto
+document (again replacing "name_of_package" with the name of the
+package). For example, if we want to use the package `here` [@here] we'd
+*go to the R console* within RStudio and execute
+
+```{r}
+#| eval: false
+ 
+install.packages("here")
+```
+
+and to use it *within a quarto document* we'd place
+
+```{r}
+#| eval: false
+ 
+library(here)
+```
+
+in the first code chunk. (Note that `install.packages` requires the
+package name to be in quotes but `library` does not.) We can now use all
+of the functions within the parameters package.
+
+### The Tidyverse
+
+The Tidyverse [@tidyverse] is suite of packages containing a wide array
+of tools for data science that have been developed using a common
+underlying philosophy and grammar. It contains the following core
+packages:
+
+-   `ggplot2` [@ggplot2]: a powerful system for plotting data.
+-   `dplyr` [@dplyr]: tools for data wrangling.
+-   `tidyr` [@tidyr]: tools for tidying data (see Working with data).
+-   `readr` [@readr]: tools for importing data.
+-   `purrr` [@purrr]: tools for functional programming.
+-   `tibble` [@tibble]: tools for working with data frames.
+-   `stringr` [@stringr]: tools for working with strings/text.
+-   `forcats` [@forcats]: tools for working with categorical variables.
+-   `lubridate` [@lubridate]: tools for working with times and dates.
+
+In addition, it contains some smaller packages with more specialised
+functions, noteably `readxl` [@readxl] for importing Microsoft Excel
+files and `googlesheets4` [@googlesheets4] and `googledrive`
+[@googledrive] for working with Google sheets, and `haven` [@haven] for
+importing data files from IBM SPSS Statistics, Stata and SAS.
+
+To install all of these packages in one command we'd *go to the R
+console* within RStudio and execute
+
+```{r}
+#| eval: false
+ 
+install.packages("tidyverse")
+```
+
+Having done this, then we can either load the ones we want to use
+individually within our quarto document, for example
+
+```{r}
+#| eval: false
+ 
+library(dplyr)
+```
+
+or load all of the core packages using
+
+```{r}
+#| eval: false
+ 
+library(tidyverse)
+```
+
+Non-core packages have to be loaded individually. For example, if we
+want to use `readxl` then we have to execute
+
+```{r}
+#| eval: false
+ 
+library(readxl)
+```
+
+even if we have already loaded the tidyverse.
+
+### The `here()` function
+
+Another important package when getting started is the `here` package,
+which is incredibly useful for importing data and more generally
+locating files within your project. The function `here()` from within
+the package of the same name [@here] returns the filepath of the project
+folder and will, therefore, make your life easier and your work
+portable.
+
+Let's imagine you have a data file called `data.csv` (imaginative name),
+stored in a folder called `data` which is in a folder called
+`my_project`. Imagine that this folder is on your hard drive in your
+main `Documents` folder, and that you use Windows. To enable R to access
+this file you would need to type the following filepath (assuming you've
+stolen my name):
+
+```{r}
+#| eval: false
+ 
+C:/Users/andyfield/Documents/my_project/data/data.csv
+```
+
+If your colleague tries to run your code, it will fail because they will
+be using their computer, not yours, and the data will be stored
+somewhere else. If you change computer, your code will fail unless you
+set it up exactly like your old one. However, by using a project folder
+we can access the data file with
+
+```{r}
+#| eval: false
+ 
+here("data/data.csv")
+```
+
+which says "look for a folder called `data` within my project, and
+within that look for a file called `data.csv`". This code will work on
+any computer because `here()` finds the location of the current project,
+wherever it may be (e.g., "C:/Users/andyfield/Documents/my_project/"),
+and then adds the text within the function to the end of it. Wherever
+you have saved you project folder, `here()` will find it.
+
+### Housekeeping
+
+Although you can load packages within any code chunk within your quarto
+document, we suggest loading them all in your first code chunk. Doing so
+allows you to easily keep track of the packages that the document
+depends upon and ensures that all the packages you need are loaded at
+the start of the rendering process. We'd also recommend loading them in
+alphabetic order to help avoid accidentally loading packages twice!
+
+To follow our example analysis you will need to install the packages
+listed below, and then you're first code chunk should load them as
+follows:
+
+```{r}
+library(here)
+library(readxl)
+library(tidyverse)
+```
+
+## Code fundamentals
+
+Let's assume you have a quarto document up and running and perhaps you
+have written some text to remind you about what you are about to do and
+why. Sooner or later you will want to do something using R. To do so you
+need to insert a code chunk by pressing simultaneously the *Ctrl*, *Alt*
+and *i* keys (Windows and Linux) or *Cmd*, *Option* and *i* on MacOS.
+This creates an area with a darker background that will have `{r}` at
+the top (@fig-codechunk). Anything typed within this area will be
+processed by R when the document renders. You can put as much code as
+you want in a single code chunk. At the extreme you could have a single
+code chunk in your quarto document that does everything. However, it is
+better to break an analysis up into separate code chunks that relate to
+specific parts of your analysis, and to prepare tables and plots in
+self-contained code chunks.
+
+You can process code while working on a quarto document, which is known
+as *executing* or *running* the code. Running code as you write it is
+useful for seeing the results that you want to report and interpret
+without needing to render the entire document. Note in @fig-codechunk
+that code chunks have three icons. From left-to-right, the first opens a
+dialog box to set options for the code chunk; the second executes all of
+the previous code chunks; and the last executes all of the code in the
+code chunk. The results of the code will be displayed below the code
+chunk in quarto. You can also execute specific parts of your code by
+selecting it and pressing the *Ctrl* (*Cmd* on MacOS) and then the
+return key of your keyboard.
+
+![Example of a code
+chunk](images/code_chunk_annotated.png){#fig-codechunk}
+
+### Creating objects
+
+Most commands in R have a common structure which can be summed up as:
+
+```{r}
+#| eval: false
+ 
+object <- instructions
+```
+
+The thing on the left is something you wish to create that you have
+decided to name 'object' (but you could have named it something else),
+and on the right will be some instructions about how to create it. In
+the middle is an arrow an arrow (\<-) known as the *assignment
+operator*, so called because it assigns what's on the right to the name
+on the left.
+
+You can create many different types of 'object'; some examples are a
+table of data, a table of results, a statistical model, output from a
+statistical model, or a plot. For example, if we want to fit a linear
+model (regression) we can do this using code that has this general
+structure:
+
+```{r}
+#| eval: false
+ 
+my_lm <- lm()
+```
+
+The left hand side tells R to store the object we create using the name
+'my_lm', and the right hand side tells R to use a function called `lm()`
+(the lm stands for linear model) to create it. So, what is a function?
+
+A *function* is a bit of code that someone has written (and that you can
+write yourself) and takes the form `name_of_function()`. Some examples
+of functions are `lm()`, `mutate()`, and `ggplot()`. Within the brackets
+you specify pre-defined 'options' known as arguments, which vary across
+functions but essentially tell the function what you want it to do. For
+example, the `lm()` function, as a bare minimum, needs two arguments to
+be set, one is labelled 'formula' and the other 'data', so we could
+include these arguments in our code above:
+
+```{r}
+#| eval: false
+ 
+my_lm <- lm(formula, data)
+```
+
+Arguments are always separated by commas and require you to specify a
+value using `=`. (Sometimes arguments have default values in which case
+you don't need to include them unless you want to override that
+default.) The `lm()` function needs a formula specifying the linear
+model that you want, which takes the form `y ~ x` for one predictor and
+`y ~ x1 + x2 + ... xn` for multiple predictors. In each formula the 'y'
+and all the terms starting with 'x' need to be replaced with the names
+of variable within your data object. You also need to tell the function
+where to find the data using the `data` argument. For example, let's say
+we wanted to predict a variable called 'happiness' from another variable
+called 'relationship_satisfaction' and these variables were stored in an
+object called 'happy_data' then we could fit the model as follows:
+
+```{r}
+#| eval: false
+ 
+happy_lm <- lm(formula = happiness ~ relationship_satisfaction, data = happy_data)
+```
+
+Executing this code will fit an OLS linear model that predicts happiness
+from relationship satisfaction and stores it in an object called
+`happy_lm`. We can extract from that object information such as model
+parameter estimates, fit statistics, residuals and so on because once an
+object has been created it is stored in R's memory. For example, if we
+have loaded the `parameters` package within our quarto document
+
+```{r}
+#| eval: false
+ 
+library(parameters)
+```
+
+we could use the `model_parameters` function from that package to
+extract the table of coefficients from our linear model by executing
+
+```         
+model_parameters(happy_lm)
+```
+
+### Naming objects
+
+R is case sensitive, meaning that it will treat an object called
+`happy_lm` as being completely different to an object called `Happy_lm`.
+Humans are way more fallible to ignoring the case of letters so this
+case sensitivity is a common causes of R throwing an error. There are
+other conventions about which you need to be aware too. As a brief
+summary of the style recommended in @fielddsr22026:
+
+-   Always use lower case letters to name things.
+-   R treats a space as seapareting objects so you will get errors if
+    you use spaces in object names, instead use an underscore (e.g.
+    `relationship_satisfaction` not `relationship satisfaction`).
+-   Be concise and meaningful. So, `relationship_satisfaction` probably
+    fits the bill (although maybe we could truncate to something like
+    `relation_satis` without losing meaning). A name like
+    `scores_on_the_meaningfullness_of_my_relationships_scale` is
+    meaningful but too long, and `rs` is concise but not meaningful.
+-   Place spaces around all operators (=, +, -, \<-) to make code easier
+    to read.
+-   Use a suffix (consistently) to indicate what an object contains; for
+    example, you might use `_lm` for a linear model or `_mod` for a
+    model generally, `_tbl` for a table, `_out` for the ouput of a model
+    and so on.
+
+### The pipe operator
+
+Often when writing code we want to string several operations together.
+For example, you might want to filter and then sort your data. Sticking
+with our relationship satisfaction and happiness data (`happy_data`),
+imagine that we had a variable within the data called `duration` that
+recorded the length of the relationship in years and we wanted to filter
+out short-term relationships (which we define as less than a year). We
+also want to sort the data by this variable.
+
+We can use the `filter()` function from the `dplyr` package to filter
+the data by loading `dplyr` in our first code chunk using
+`library(dplyr)` and later executing:
+
+```{r}
+#| eval: false
+ 
+long_happy <- filter(.data = happy_data, duration > 1)
+```
+
+This creates a new data object called `long_happy` and within the
+`filter()` function we specify the original data object that we want to
+filter (`.data = happy_data`) and we include a logical instruction
+(`duration > 1`) that says 'keep the case if the variable duration is
+greater than 1'. Remembering that `duration` is the number of years of
+the relationship, this will retain all cases where the relationship is
+more than a year old.
+
+We can now sort this new data object using the `arrange()` function,
+also from `dplyr`.
+
+```{r}
+#| eval: false
+ 
+long_happy_sort <- arrange(.data = long_happy, duration)
+```
+
+This creates a new data object called `long_happy_sort` and within the
+`arrange()` function we specify the filtered data object that we want to
+sort (`.data = long_happy`) and we include the variable by which we want
+to sort the data (`duration`).
+
+To sum up, we could achieve the filtering and sorting by executing this
+code:
+
+```{r}
+#| eval: false
+
+long_happy <- filter(.data = happy_data, duration > 1)
+long_happy_sort <- arrange(.data = long_happy, duration)
+```
+
+This method is fine, but we've created mutliple objects and we're now
+storing the same data in two objects(`long_happy` and
+`long_happy_sort`), so it might be more efficient to combine these
+functions:
+
+```{r}
+#| eval: false
+ 
+long_happy_sort <- arrange(.data = filter(.data = happy_data, duration > 1), duration)
+```
+
+Note that within `arrange()` we have replaced `long_happy` with
+`filter(.data = happy_data, duration > 1)` so instead of creating an
+object `long_happy` and using it, we use the code that filters the file
+directly. We have nested the `filter()` function within `arrange()`.
+This method has the advantage that we are not unnecessarily storing
+objects, but the disadvantage that it is difficult to read and
+understand.
+
+In the interests of writing clear and easily-readable code, we recommend
+using the pipe operator `|>` to link functions. As its name suggest the
+pipe operator creates a pipeline between functions allowing the output
+of one function to `flow` into the next. In the current example, we can
+use the pipe operator as follows:
+
+```{r}
+#| eval: false
+ 
+long_happy_sort <- filter(.data = happy_data, duration > 1) |> arrange(duration)
+```
+
+or more explicitly
+
+```{r}
+#| eval: false
+
+long_happy_sort <- happy_data |>
+  filter(duration > 1) |>
+  arrange(duration)
+```
+
+We create `long_happy_sort` by starting the pipline with the original
+data object (`happy_data`) which 'flows' into the `filter()` function.
+Note that within this function we no longer need to specify the data
+because `filter()` will assume it needs to use whatever is coming
+through the pipe. The `filter()` function does its job and then sends
+the resulting filtered data through the next pipe into `arrange()`,
+where it is sorted. The advantages of the pipe are that you avoid
+creating lots of intermediate objects and your code becomes very
+readable (it is clear that you start with some data, filter it and then
+sort it).
+
+## Working with data
+
+If you have worked with other Statistical of data management software
+you will be familiar with spreadsheets. These are typically interactive
+grids of columns and rows where you might type values or text and then
+save them as a data file. R does not have an interactive spreadsheet
+interface. If you want to enter data, you do it by creating variables
+using code and then binding these variables it in a data object known as
+a *dataframe* or *tibble*.[^2] You'd only be likley to do this for
+fairly small data sets, so we won't cover it here, but see
+@fielddsr22026.
+
+[^2]: A 'tibble' is a special type of dataframe that behaves in 3 subtly
+    different ways that do not affect most users. Therefore, we will
+    ignore these differences and always refer to 'dataframes'.
+
+For most researchers, data will be collected and stored using specialist
+survey (e.g., Qualtrics, Survey Monkey) or experiment generator (e.g.,
+Inquisit, ePrime, and PsychoPy) software. Alternatively, if it does need
+to be entered manually, you might choose to use an interactive
+spreadsheet such as Microsoft Excel, numbers, Apache OpenOffice or
+Google sheets. As mentioned earlier the Tidyverse has several specialist
+packages for importing different types of data file, but often importing
+will go more smoothly if you export the data into a text-based file
+format such as CSV or tab-delimited text before importing into R.
+
+### Importing data
+
+In our example analysis we will use the data from @perchtold2019 (link
+in the resources), which downloads as an Excel file
+(`pone.0211618.s002.xlsx`). Fortunately, we can use the `read_excel`
+function from the `readxl` packages which is loaded as part of
+`tidyverse`. Let's assume we have downloaded the data file and saved it
+in a folder called `data` within our main project folder. We can import
+the data using the following code:
+
+```{r}
+perchtold_df <- here("data/pone.0211618.s002.xlsx") |> 
+  read_excel()
+```
+
+This code uses `here()` to get the full filepath for the data file by
+appending the text within the function to the filepath for the project.
+This filepath is then piped into `read_excel()`, which reads in the file
+and converts it to a dataframe, we save this dataframe as `perchtold_df`
+(but we could have named it anything).
+
+Similarly, had the file been a CSV file we could have done the same
+thing using `read_csv()` from the `readr` package.
+
+```{r}
+#| eval: false
+
+perchtold_df <- here("data/pone.0211618.s002.csv") |> 
+  read_csv()
+```
+
+To view an object, we can select the name of the object in our code
+chunk and execute it. RStudio will display the object below the code
+chunk. If we want to view our data we should select `perchtold_df` and
+press *Ctrl* (*Cmd* on MacOS) and then the return key. Note that the
+data have been read in as a series of columns, each representing a
+variable, and each row represents a participant (@fig-perchtolddf).
+
+![Data from Perchtold et al.
+(2019)](images/perchtold_df.png){#fig-perchtolddf}
+
+### Data types
+
+When a data file is imported the function used takes an educated guess
+at what each column contains. For example, in @fig-perchtolddf note that
+each column has `<dbl>` underneath, which indicates that `read_excel`
+thinks that these columns contain numbers with decimals. R recognises
+the following data types, which are labelled with abbreviations of the
+highlighted word:
+
+-   `int`: numbers in *integer* format (i.e., whole numbers).
+-   `dbl`: numbers in *double*-precision floating-point format. In
+    layperson terms these are any real number. Doubles have decimal
+    places whereas integers do not.
+-   `chr`: values containing strings of *characters*. In other words
+    text.
+-   `fct`: a special kind of character variable where the text strings
+    represent categories or groups. This kind of variable is known as a
+    *factor*. When a variable is designated as a factor, each unique
+    text string is stored as a 'level' of a categorical variable. An
+    example of a factor would be a variable that takes the values
+    'Treatment' and 'Control' depending on whether a person was assigned
+    to a treatment condition or a control group. When you want to fit
+    models with categorical variables, you will work with factors.
+-   `date`: values that contain dates.
+-   `lgl`: values that are either TRUE or FALSE, known as *logical* or
+    boolean values.
+
+Although functions for importing variables typically do a good job of
+guessing the data type, they do get it wrong (dates in Excel are
+particularly messy) so you might need to manually specify the data type
+of each column within the function, or change the data type after the
+data has been imported. It is fair to say there is a lot to learn about
+processing data, which we do not have room to explore, but see
+@fielddsr22026.
+
+### Accessing variables
+
+Sometimes we might want to extract a particular column or variable from
+a dataframe, or work with a subset of the variables. When working with a
+single variable the easiest way to access it is using the `$` symbol. In
+general terms:
+
+```{r}
+#| eval: false
+
+dataframe$variable_name
+```
+
+Let's say we wanted to work with the variable called `psyc` within the
+`perchtold_df` dataframe, we would do this using
+
+```{r}
+#| eval: false
+
+perchtold_df$psyc
+```
+
+If we want a selection of variables we can use `select()` from `dplyr`,
+which takes the form
+
+```{r}
+#| eval: false
+
+select(.data = name_of_dataframe, list_of_variables)
+```
+
+For example, if we wanted to use only the variables `psych`, `pos3` and
+`pos7` in our data frame we could achieve this using
+
+```{r}
+#| eval: false
+
+select(.data = perchtold_df, psych, pos3, pos7)
+```
+
+or using the pipe:
+
+```{r}
+#| eval: false
+
+perchtold_df |> 
+  select(psych, pos3, pos7)
+```
+
+## Example analysis
+
+To demonstrate R's extensive analytic capability we use open data from a
+study conducted by @perchtold2019. In this study 95 qualified
+participants aged 17 to 35 years completed the Reappraisal Inventiveness
+Test (RIT), humorous adaptation, and depression questionnaires.
+Participants were confronted with 4 anxiety-provoking situations (e.g.
+*Late at night, you are the only one left working at the office. As you
+are sitting at your desk, suddenly all the lights on your floor switch
+off*) and were asked to write as many humorous ways as they could think
+of to diminish anxiety. Each of the humorous explanations (or
+reappraisals) was classified into RIT categories; which were further
+classified into either positive reinterpretation strategy
+(situation-focused reappraisal) or a de-emphasizing strategy
+(self-focused reappraisal). Participants also completed the Center for
+Epidemiology Studies depression scale (CES-D, variable name ads),
+resulting in an overall score from 1 to 48, with higher scores
+indicating a greater number of self-reported depressive experiences.
+
+In this section we will replicate some of their reported analyses using
+R. Remember from earlier sections that our Quarto document would begin
+with a code chunk that loads the libraries we need and reads in the data
+file.
+
+```{r}
+#| eval: false
+
+library(here)
+library(readxl)
+library(tidyverse)
+library(parameters)
+library(correlation)
+
+perchtold_df <- here("data/pone.0211618.s002.xlsx") |> 
+  read_excel()
+```
+
+> AF NOTE: I think we should list here the analyses we will replicate
+> and maybe give a page reference
+
+We begin with a simple one-sample t-test (not found in Perchtold) to
+demonstrate R's statistical functions. Second, we replicate correlations
+and p-values in column 3, Table 2 (labeled *r(p)*), page 8 in Perchtold.
+Third, we replicate unstandardized regression coefficients and estimated
+standard errors labeled *B(se)* in column 5, Table 2, page 8.
+
+### One-Sample T-Test
+
+A first analysis determines whether the participants do not show
+depressive symptoms on average which is reflected as a CES-D score of 15
+or lower (Stein 2014). The threshold of 15 was chosen because a score of
+16 or is interpreted as displaying depressive symptoms. This hypothesis
+can be tested using a one-sample t-test.
+
+-   H_0: the true mean CES-D is equal to 15
+-   H_1: the true mean CES-D is less than 15
+
+> AF NOTE: I think it's a good idea to show the function with its key
+> arguments in general form before the specific code - see some examples
+> in my section.
+
+In R we perform a *t*-test of this hypothesis using the `t.test()`
+function which is available in base R. The general form of the
+`t-test()` includes specifying the vector of data `x`, whether the test
+is two-sided or one-sided and the one-sided test ("less" or "greater"),
+the value of `mu`, the confidence level `conf.level`, whether the data
+is `paired` and whether variances are assumed to be equal, `var.equal`
+(the last two options apply to a two-sample t-test).
+
+```{r}
+#| eval: false
+#| echo: true
+t.test(x, y = NULL,
+       alternative = c("two.sided", "less", "greater"),
+       mu = 0, paired = FALSE, var.equal = FALSE,
+       conf.level = 0.95, …)
+```
+
+Mu is the constant which is compared to the sample mean and in this case
+mu is equal to 15. Thealternative hypothesis is set to "less" to perform
+a one-tailed test. The object produced from the t-test (called
+`depression`) is printed.
+
+> AF NOTE: I'd advocate using parameters::parameters() because it'll
+> give consistent tabulated output for t.test, lm and just about
+> anything else you throw at it. https://easystats.github.io/parameters/
+
+```{r}
+#| label: One-sample t-test
+#| eval: false
+depression <- t.test(x=perchtold_df$ads, mu=15, alternative="less" ) 
+depression
+```
+
+The function `parameters()` in the `parameters` package is often used to
+format theoutput generated from many statistical functions including
+`t.test()` and `lm()` to give consistent tabulated output. The double
+colon `::` convention ensures that the function `parameters()` is run
+from the package `parameters` in case another package that has been
+activated for use using the format `package::function`.
+
+```{r}
+#| label: parameters() function and package
+#| eval: false
+t.test(x=perchtold_df$ads, mu=15, alternative="less" ) |> parameters::parameters()
+```
+
+On examination of the output the p-value for this test is 0.750 which is
+greater than 𝛼=0.05. We have insufficient evidence to reject the null
+hypothesis and the decision is to Fail to Reject the null hypothesis. We
+can conclude at the 5% level of significance that the true mean CES-D
+value is not less than 15.
+
+### Correlation Coefficient
+
+In two-way comparisons Perchtold and colleagues correlate self-reported
+depressive experiences to each of the three sub-strategies within the
+positive reinterpretation strategy (general positive aspects (`pos3`),
+worst-case comparison (`pos7`), disadvantage as advantage `(pos8`)) and
+each of the three sub-strategies within the de-emphasizing category
+(alternative explanation (`rel10`), trivializing the problem (`rel11`),
+handing over responsibility (`rel14`)). (Perchtold Table 2, 'r(p)').
+
+The `correlation()` function in the 'correlation' package can be used to
+generate correlation coefficients between all columns in a data frame as
+well as p-values. The default method is Pearson. Kendall and Spearman
+correlations can be produced using correlation(method="kendall")\` or
+correlation(method="spearman").
+
+> AF NOTE: I'd advocate using the correlation package
+> https://easystats.github.io/correlation/ Also, in quarto I think it's
+> better to use `kable` to print output and within that use digits = x
+> to do rounding because it doesn't create a permanent change. So
+> cor(perchtold_c) \|\> kable(digits = 3)
+
+> TG NOTE: correlation() output below does not replicate Table 2. For
+> example, The p-value of the ads/pos3 pairing is reported as 0.023 in
+> the manuscript, which appears to be an unadjusted p-value
+> (p_adjust="none"). Adjusted p-values are produced below (which is what
+> I would have thought they reported).
+
+```{r}
+#| label: Correlation
+#| eval: false
+perchtold_df |> select(ads, pos3, pos7, pos8, rel10, rel11, rel14) |>
+correlation()
+```
+
+Correlation coefficients are reported in the `r` column, for example,
+the correlation coefficient for the `ads`/`pos3` pair is -0.23.
+*P*-values adjusted for multiple comparisons are the default and the
+adjusted p-value of the ads`/`pos3\` correlation coefficient is 0.434.
+
+Unadjusted *P*-values (not adjusted for multiple comparisons), as
+reported in Perchtold Table 2 can be produced using the
+`p_adjust="none"` option.
+
+```{r}
+#| label: Correlation with unadjusted p-values
+#| eval: false
+perchtold_df |> select(ads, pos3, pos7, pos8, rel10, rel11, rel14) |>
+correlation(p_adjust = "none")
+```
+
+The unadjusted *p*-value of the 'ads' / 'pos3' correlation equals 0.023
+in the table above, matching the value reported in Perchtold Table 2.
+
+### Multiple Linear Regression
+
+Following Perchtold et al. (2019) and using multivariate linear
+regression, we can test whether three sub-strategies within the positive
+reinterpretation strategy (general positive aspects (`pos3`), worst-case
+comparison (`pos7`), disadvantage as advantage (`pos8`)) and three
+sub-strategies within the de-emphasizing category (alternative
+explanation (`rel10`), trivializing the problem (`rel11`), handing over
+responsibility (`rel14`)) are predictive of self-reported depressive
+experiences measured via the CES-D depression scale (`ads`). \[These
+results are reported in Table 2 of Perchtold.\]
+
+Several of the research questions that can be answered using multiple
+linear regression:
+
+1.  Do *any* of the six reappraisal strategies have a linear
+    relationship to self-reported depressive experience? (overall test
+    of the model)
+2.  Which of the six strategies explain variation in self-reported
+    depressive experience? (test the estimated parameter for each
+    strategy = 0)
+3.  What is the size of the relationship between a specific strategy and
+    self-reported depressive experience? (confidence interval for a
+    parameter)
+4.  What is the predicted CES-D depression score for a person with a
+    given set of the six strategies? (prediction interval)
+
+In R we answer these questions by estimating a linear regression using
+the `lm()` function. We designate the data frame which is stored in
+object perchtold_df and specify the model using a formula with the
+dependent variable on the left side of a tilde (`~`) and the explanatory
+variables on the right side of the tilde, separated by plus (+) signs.
+
+`ads ~ pos3 + pos7 + pos8 + rel10 + rel11 + rel14`
+
+> AF NOTE: again I'd suggest parameters?
+> TG NOTE: to answer all the research questions, for example to display the
+> regression f-test an additional function would need to be used - suggestions?
+
+The estimated model can be written to an object, called ads_reg in this
+case, and the model results are processed using the `summary()`
+function.
+
+```{r}
+#| label: Multiple Regression
+#| eval: false
+ads_reg <- lm(data = perchtold_df, ads ~ pos3 + pos7 + pos8 + rel10 + rel11 + rel14) 
+summary(ads_reg)
+```
+
+The regression output provides answers to our research questions. \[Too
+much detail? If not, each would be answered using the values in the
+output\]
+
+1.  Do *any* of the six reappraisal strategies have a linear
+    relationship to self-reported depressive experience? (overall test
+    of the model)
+2.  Which of the six strategies explain variation in self-reported
+    depressive experience? (test the estimated parameter for each
+    strategy = 0)
+3.  What is the size of the relationship between a specific strategy and
+    self-reported depressive experience? (confidence interval for a
+    parameter)
+4.  What is the predicted CES-D depression score for a person with a
+    given set of the six strategies? (prediction interval)
+
+### Producing Tables of Output
+
+> AF NOTE: maybe this needs to come earlier if we decide not to use
+> round.
+
+Often we would like to produce well-formatted tables of regression
+output for reporting or publication, and packages such as broom() make
+this process much more efficient. The tidy() function standardizes the
+output from the model and the kable() function generates a table of the
+contents.
+
+```{r}
+#| label: Regression tables 
+#| eval: false
+library(knitr)
+library(broom)
+tidy(ads_reg) |> kable(digits = 2)
+```
+
+### Classes and Lists
+
+All of the statistical tests above produce useful data elements that are
+unseen in the output that is typically produced by printing the object,
+by using `summary()`, or by running the object through `tidy()` and
+`broom()`. For example, the output produced in an object created by the
+`lm()` function includes useful data such as all of the residuals and
+fitted values. These do not need to be calculated; you just need to
+learn how to extract them.
+
+The first step is to write your output to an object. The object will
+have standardized names for variables and a standardized format. It will
+be stored in what is called a *list* object which is an object that
+contains objects of different types. Where a data frame or tibble has to
+have a fixed number of rows across all columns, a list is not limited to
+that structure. Within the list an object can be a character vector of
+length 1 or a numeric array with dimensions $nxk$.
+
+All lists produced by `lm()` include the following objects:\[usful?\]
+
+In R, each object created by `lm()` in the structure listed above is
+designated as a class "lm" object. Classes allow creation of a template
+to store information, and just as importantly, to extract information.
+Every "lm" class object will contain residuals, fitted values, etc...
+and users can write functions or packages to manipulate data produced as
+a class-\[insert class name\] object such as a class-lm object. Packages
+such as broom are equipped to check the class of an object and "tidy" it
+to an even more standardized format. But we don't need to tell broom
+what class an object is, the object itself provides that information.
+
+\[How classes are useful to the R user\]
+
+## Resources
+
+### Data and quarto file
+
+-   Data for the example analysis:
+    <https://doi.org/10.1371/journal.pone.0211618.s002>
+-   Github repository of this chapter, including quarto document of the
+    example analysis. \*\*\*\*\*ANDY TO SET UP\*\*\*\*\*
+
+### Software and tutorials
+
+-   RStudio: <https://posit.co/download/rstudio-desktop/>
+-   R: <https://cran.rstudio.com/>
+-   Quarto: <https://quarto.org/>
+-   Video tutorials to get started with R, RStudio and quarto:
+    <https://youtube.com/playlist?list=PLEzw67WWDg80-fT1hq2IZf7D62tRmKy8f&si=HHmxuWt-J5Qu-VqO>

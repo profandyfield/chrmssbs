@@ -1,0 +1,603 @@
+---
+references:
+- id: fielddsr22025
+  author:
+  - family: Field
+    given: Andy P.
+  edition: 2nd
+  issued: 2025
+  key: Y39Y84RQ
+  libraryID: 1
+  note: "Citation Key: field_dsr2_2025"
+  providerKey: 2509FBBE-5BB0-44C4-B119-6083A81ED673
+  publisher: Sage
+  publisher-place: London
+  rights: All rights reserved
+  title: Discovering statistics using R and RStudio
+  type: book
+- id: rcoreteam2024
+  author:
+  - family: R Core Team
+  ISBN: ISBN 3-900051-07-0
+  issued: 2024
+  key: GUNTDPL6
+  libraryID: 1
+  providerKey: 2509FBBE-5BB0-44C4-B119-6083A81ED673
+  publisher: R Foundation for Statistical Computing
+  publisher-place: Vienna, Austria
+  title: "R: A language and environment for statistical computing"
+  type: book
+  versionNumber: 4.4
+- id: rexeranalytics2020
+  author:
+  - family: Rexer Analytics
+  issued: 2020
+  key: 8X6FQF95
+  libraryID: 1
+  providerKey: 2509FBBE-5BB0-44C4-B119-6083A81ED673
+  title: 2020 data science survey highlight
+  type: report
+  URL: "https://www.rexeranalytics.com/data-science-survey"
+- id: simons2019
+  accessed: "14:30:53"
+  author:
+  - family: Simons
+    given: Janet E.
+  - family: Holmes
+    given: Daniel T.
+  container-title: The Journal of Applied Laboratory Medicine
+  container-title-short: Jrnl App Lab Med
+  DOI: 10.1373/jalm.2018.028373
+  ISSN: 2475-7241
+  issue: 3
+  issued: 2019-11
+  key: QCA7ALKZ
+  language: en
+  libraryID: 1
+  page: 471-473
+  providerKey: 2509FBBE-5BB0-44C4-B119-6083A81ED673
+  source: DOI.org (Crossref)
+  title: Reproducible research and reports with R
+  type: article-journal
+  URL: "https://academic.oup.com/jalm/article/4/3/471-473/5636941"
+  volume: 4
+- id: munafò2017
+  accessed: "14:23:39"
+  author:
+  - family: Munafò
+    given: Marcus R.
+  - family: Nosek
+    given: Brian A.
+  - family: Bishop
+    given: Dorothy V. M.
+  - family: Button
+    given: Katherine S.
+  - family: Chambers
+    given: Christopher D.
+  - family: Percie Du Sert
+    given: Nathalie
+  - family: Simonsohn
+    given: Uri
+  - family: Wagenmakers
+    given: Eric-Jan
+  - family: Ware
+    given: Jennifer J.
+  - family: Ioannidis
+    given: John P. A.
+  container-title: Nature Human Behaviour
+  container-title-short: Nat Hum Behav
+  DOI: 10.1038/s41562-016-0021
+  ISSN: 2397-3374
+  issue: 1
+  issued: 2017-01-10
+  key: PZFC4QAN
+  language: en
+  libraryID: 1
+  page: 0021
+  providerKey: 2509FBBE-5BB0-44C4-B119-6083A81ED673
+  source: DOI.org (Crossref)
+  title: A manifesto for reproducible science
+  type: article-journal
+  URL: "https://www.nature.com/articles/s41562-016-0021"
+  volume: 1
+- id: lavaan
+  author:
+  - family: Rosseel
+    given: Yves
+  DOI: 10.18637/jss.v048.i02
+  issued: 2012
+  page: 1\--36
+  providerKey: Packages
+  title: "{lavaan}: An {R} Package for Structural Equation Modeling"
+  type: article
+  volume: 48
+- id: staples2023
+  accessed: "16:15:42"
+  author:
+  - family: Staples
+    given: Timothy L.
+  container-title: Royal Society Open Science
+  container-title-short: R. Soc. open sci.
+  DOI: 10.1098/rsos.221550
+  ISSN: 2054-5703
+  issue: 4
+  issued: 2023-04
+  key: MEETAXEK
+  language: en
+  libraryID: 1
+  page: 221550
+  providerKey: 2509FBBE-5BB0-44C4-B119-6083A81ED673
+  source: DOI.org (Crossref)
+  title: Expansion and evolution of the R programming language
+  type: article-journal
+  URL: "https://royalsocietypublishing.org/doi/10.1098/rsos.221550"
+  volume: 10
+- id: rstudioapi
+  author:
+  - family: Ushey
+    given: Kevin
+  - family: Allaire
+    given: JJ
+  - family: Wickham
+    given: Hadley
+  - family: Ritchie
+    given: Gary
+  issued: 2024
+  providerKey: Packages
+  title: "rstudioapi: Safely Access the RStudio API"
+  type: article
+  URL: "https://CRAN.R-project.org/package=rstudioapi"
+- id: quarto
+  author:
+  - family: Allaire
+    given: JJ
+  - family: Dervieux
+    given: Christophe
+  issued: 2024
+  providerKey: Packages
+  title: "quarto: R Interface to \"Quarto\" Markdown Publishing System"
+  type: article
+  URL: "https://CRAN.R-project.org/package=quarto"
+- id: fielddsr22026
+  author:
+  - family: Field
+    given: Andy P.
+  edition: 2nd
+  issued: 2026
+  key: Y39Y84RQ
+  libraryID: 1
+  note: "Citation Key: field_dsr2_2026"
+  providerKey: 2509FBBE-5BB0-44C4-B119-6083A81ED673
+  publisher: Sage
+  publisher-place: London
+  rights: All rights reserved
+  title: Discovering statistics using R and RStudio
+  type: book
+- id: rstudioteam2016
+  author:
+  - family: RStudio Team
+  issued: 2016
+  key: HJ8T65EP
+  libraryID: 1
+  providerKey: 2509FBBE-5BB0-44C4-B119-6083A81ED673
+  publisher: RStudio, Inc.
+  publisher-place: Boston, MA
+  title: "RStudio: Integrated Development for R"
+  type: book
+  URL: "http://www.rstudio.com/."
+- id: here
+  author:
+  - family: Müller
+    given: Kirill
+  issued: 2020
+  providerKey: Packages
+  title: "here: A Simpler Way to Find Your Files"
+  type: article
+  URL: "https://CRAN.R-project.org/package=here"
+- id: perchtold2019
+  accessed: "14:54:11"
+  author:
+  - family: Perchtold
+    given: Corinna M.
+  - family: Weiss
+    given: Elisabeth M.
+  - family: Rominger
+    given: Christian
+  - family: Feyaerts
+    given: Kurt
+  - family: Ruch
+    given: Willibald
+  - family: Fink
+    given: Andreas
+  - family: Papousek
+    given: Ilona
+  container-title: PLOS ONE
+  container-title-short: PLoS ONE
+  DOI: 10.1371/journal.pone.0211618
+  editor:
+  - family: Jonason
+    given: Peter Karl
+  ISSN: 1932-6203
+  issue: 1
+  issued: 2019-01-31
+  key: 2QMVDVSG
+  language: en
+  libraryID: 1
+  page: e0211618
+  providerKey: 2509FBBE-5BB0-44C4-B119-6083A81ED673
+  source: DOI.org (Crossref)
+  title: "Humorous cognitive reappraisal: More benign humour and less
+    \"dark\" humour is affiliated with more adaptive cognitive reappraisal
+    strategies"
+  title-short: Humorous cognitive reappraisal
+  type: article-journal
+  URL: "https://dx.plos.org/10.1371/journal.pone.0211618"
+  volume: 14
+- id: ggplot2
+  author:
+  - family: Wickham
+    given: Hadley
+  issued: 2016
+  providerKey: Packages
+  publisher: Springer-Verlag New York
+  title: "ggplot2: Elegant Graphics for Data Analysis"
+  type: article
+  URL: "https://ggplot2.tidyverse.org"
+- id: dplyr
+  author:
+  - family: Wickham
+    given: Hadley
+  - family: François
+    given: Romain
+  - family: Henry
+    given: Lionel
+  - family: Müller
+    given: Kirill
+  - family: Vaughan
+    given: Davis
+  issued: 2023
+  providerKey: Packages
+  title: "dplyr: A Grammar of Data Manipulation"
+  type: article
+  URL: "https://CRAN.R-project.org/package=dplyr"
+- id: tidyr
+  author:
+  - family: Wickham
+    given: Hadley
+  - family: Vaughan
+    given: Davis
+  - family: Girlich
+    given: Maximilian
+  issued: 2024
+  providerKey: Packages
+  title: "tidyr: Tidy Messy Data"
+  type: article
+  URL: "https://CRAN.R-project.org/package=tidyr"
+- id: readr
+  author:
+  - family: Wickham
+    given: Hadley
+  - family: Hester
+    given: Jim
+  - family: Bryan
+    given: Jennifer
+  issued: 2024
+  providerKey: Packages
+  title: "readr: Read Rectangular Text Data"
+  type: article
+  URL: "https://CRAN.R-project.org/package=readr"
+- id: purrr
+  author:
+  - family: Wickham
+    given: Hadley
+  - family: Henry
+    given: Lionel
+  issued: 2023
+  providerKey: Packages
+  title: "purrr: Functional Programming Tools"
+  type: article
+  URL: "https://CRAN.R-project.org/package=purrr"
+- id: tibble
+  author:
+  - family: Müller
+    given: Kirill
+  - family: Wickham
+    given: Hadley
+  issued: 2023
+  providerKey: Packages
+  title: "tibble: Simple Data Frames"
+  type: article
+  URL: "https://CRAN.R-project.org/package=tibble"
+- id: stringr
+  author:
+  - family: Wickham
+    given: Hadley
+  issued: 2023
+  providerKey: Packages
+  title: "stringr: Simple, Consistent Wrappers for Common String
+    Operations"
+  type: article
+  URL: "https://CRAN.R-project.org/package=stringr"
+- id: forcats
+  author:
+  - family: Wickham
+    given: Hadley
+  issued: 2023
+  providerKey: Packages
+  title: "forcats: Tools for Working with Categorical Variables
+    (Factors)"
+  type: article
+  URL: "https://CRAN.R-project.org/package=forcats"
+- id: lubridate
+  author:
+  - family: Grolemund
+    given: Garrett
+  - family: Wickham
+    given: Hadley
+  issued: 2011
+  page: 1\--25
+  providerKey: Packages
+  title: Dates and Times Made Easy with {lubridate}
+  type: article
+  URL: "https://www.jstatsoft.org/v40/i03/"
+  volume: 40
+- id: readxl
+  author:
+  - family: Wickham
+    given: Hadley
+  - family: Bryan
+    given: Jennifer
+  issued: 2023
+  providerKey: Packages
+  title: "readxl: Read Excel Files"
+  type: article
+  URL: "https://CRAN.R-project.org/package=readxl"
+- id: googlesheets4
+  author:
+  - family: Bryan
+    given: Jennifer
+  issued: 2023
+  providerKey: Packages
+  title: "googlesheets4: Access Google Sheets using the Sheets API V4"
+  type: article
+  URL: "https://CRAN.R-project.org/package=googlesheets4"
+- id: googledrive
+  author:
+  - family: D'Agostino McGowan
+    given: Lucy
+  - family: Bryan
+    given: Jennifer
+  issued: 2023
+  providerKey: Packages
+  title: "googledrive: An Interface to Google Drive"
+  type: article
+  URL: "https://CRAN.R-project.org/package=googledrive"
+- id: haven
+  author:
+  - family: Wickham
+    given: Hadley
+  - family: Miller
+    given: Evan
+  - family: Smith
+    given: Danny
+  issued: 2023
+  providerKey: Packages
+  title: "haven: Import and Export \"SPSS\", \"Stata\" and \"SAS\" Files"
+  type: article
+  URL: "https://CRAN.R-project.org/package=haven"
+- id: tidyverse
+  author:
+  - family: Wickham
+    given: Hadley
+  - family: Averick
+    given: Mara
+  - family: Bryan
+    given: Jennifer
+  - family: Chang
+    given: Winston
+  - family: McGowan
+    given: Lucy D'Agostino
+  - family: François
+    given: Romain
+  - family: Grolemund
+    given: Garrett
+  - family: Hayes
+    given: Alex
+  - family: Henry
+    given: Lionel
+  - family: Hester
+    given: Jim
+  - family: Kuhn
+    given: Max
+  - family: Pedersen
+    given: Thomas Lin
+  - family: Miller
+    given: Evan
+  - family: Bache
+    given: Stephan Milton
+  - family: Müller
+    given: Kirill
+  - family: Ooms
+    given: Jeroen
+  - family: Robinson
+    given: David
+  - family: Seidel
+    given: Dana Paige
+  - family: Spinu
+    given: Vitalie
+  - family: Takahashi
+    given: Kohske
+  - family: Vaughan
+    given: Davis
+  - family: Wilke
+    given: Claus
+  - family: Woo
+    given: Kara
+  - family: Yutani
+    given: Hiroaki
+  DOI: 10.21105/joss.01686
+  issued: 2019
+  page: 1686
+  providerKey: Packages
+  title: Welcome to the {tidyverse}
+  type: article
+  volume: 4
+- id: stein2014
+  accessed: "11:48:40"
+  author:
+  - family: Stein
+    given: Janine
+  - family: Luppa
+    given: Melanie
+  - family: Mahnke
+    given: Jette
+  - family: Weyerer
+    given: Siegfried
+  - family: Schomerus
+    given: Georg
+  - family: Riedel-Heller
+    given: Steffi
+  container-title: Psychiatrische Praxis
+  container-title-short: Psychiat Prax
+  DOI: 10.1055/s-0033-1343176
+  ISSN: 0303-4259, 1439-0876
+  issue: 03
+  issued: 2014
+  key: J8MZUUKR
+  language: de
+  libraryID: 1
+  page: 135-141
+  providerKey: 2509FBBE-5BB0-44C4-B119-6083A81ED673
+  source: DOI.org (Crossref)
+  title: "Depressionsscreening am telefon mittels der allgemeinen
+    depressionsskala (ADS): ergebnisse einer bevölkerungsrepräsentativen
+    erhebung. \\[screening for depression by telephone using the German
+    version of the center for epidemiological studies depression scale
+    (CES-D): results from a representative survey\\]"
+  type: article-journal
+  URL: "http://www.thieme-connect.de/DOI/DOI?10.1055/s-0033-1343176"
+  volume: 41
+- id: parameters
+  author:
+  - family: Lüdecke
+    given: Daniel
+  - family: Ben-Shachar
+    given: Mattan S.
+  - family: Patil
+    given: Indrajeet
+  - family: Makowski
+    given: Dominique
+  DOI: 10.21105/joss.02445
+  issued: 2020
+  page: 2445
+  providerKey: Packages
+  title: Extracting, Computing and Exploring the Parameters of
+    Statistical Models using {R}.
+  type: article
+  volume: 5
+- id: knitr
+  author:
+  - family: Xie
+    given: Yihui
+  issued: 2024
+  providerKey: Packages
+  title: "knitr: A General-Purpose Package for Dynamic Report Generation
+    in R"
+  type: article
+  URL: "https://yihui.org/knitr/"
+- id: kableExtra
+  author:
+  - family: Zhu
+    given: Hao
+  issued: 2024
+  providerKey: Packages
+  title: "kableExtra: Construct Complex Table with \"kable\" and Pipe
+    Syntax"
+  type: article
+  URL: "https://CRAN.R-project.org/package=kableExtra"
+- id: performance
+  author:
+  - family: Lüdecke
+    given: Daniel
+  - family: Ben-Shachar
+    given: Mattan S.
+  - family: Patil
+    given: Indrajeet
+  - family: Waggoner
+    given: Philip
+  - family: Makowski
+    given: Dominique
+  DOI: 10.21105/joss.03139
+  issued: 2021
+  page: 3139
+  providerKey: Packages
+  title: "{performance}: An {R} Package for Assessment, Comparison and
+    Testing of Statistical Models"
+  type: article
+  volume: 6
+- id: correlation
+  author:
+  - family: Makowski
+    given: Dominique
+  - family: Wiernik
+    given: Brenton M.
+  - family: Patil
+    given: Indrajeet
+  - family: Lüdecke
+    given: Daniel
+  - family: Ben-Shachar
+    given: Mattan S.
+  issued: 2022
+  providerKey: Packages
+  title: "{{correlation}}: Methods for Correlation Analysis"
+  type: article
+  URL: "https://CRAN.R-project.org/package=correlation"
+- id: radloff1977
+  accessed: "09:50:35"
+  author:
+  - family: Radloff
+    given: Lenore Sawyer
+  container-title: Applied Psychological Measurement
+  container-title-short: Applied Psychological Measurement
+  DOI: 10.1177/014662167700100306
+  ISSN: 0146-6216, 1552-3497
+  issue: 3
+  issued: 1977-06
+  key: 9RQW76XY
+  language: en
+  libraryID: 1
+  page: 385-401
+  providerKey: 2509FBBE-5BB0-44C4-B119-6083A81ED673
+  rights: "https://journals.sagepub.com/page/policies/text-and-data-mining-license"
+  source: DOI.org (Crossref)
+  title: "The CES-D scale: a self-report depression scale for research
+    in the general population"
+  title-short: The CES-D scale
+  type: article-journal
+  URL: "https://journals.sagepub.com/doi/10.1177/014662167700100306"
+  volume: 1
+- id: shean2008
+  accessed: "10:27:33"
+  author:
+  - family: Shean
+    given: Glenn
+  - family: Baldwin
+    given: Gretchen
+  container-title: The Journal of Genetic Psychology
+  container-title-short: The Journal of Genetic Psychology
+  DOI: 10.3200/GNTP.169.3.281-292
+  ISSN: 0022-1325, 1940-0896
+  issue: 3
+  issued: 2008-09-01
+  key: 5YVG9G4Q
+  language: en
+  libraryID: 1
+  page: 281-292
+  providerKey: 2509FBBE-5BB0-44C4-B119-6083A81ED673
+  source: DOI.org (Crossref)
+  title: Sensitivity and specificity of depression questionnaires in a
+    college-age sample
+  type: article-journal
+  URL: "https://www.tandfonline.com/doi/full/10.3200/GNTP.169.3.281-292"
+  volume: 169
+...
