@@ -5,7 +5,7 @@ author:
   - name: Andy P. Field
     corresponding: true
     orcid: 0000-0003-3306-4695
-    email: andy.field@sussex
+    email: andy.field@sussex.ac.uk
     affiliations:
       - name: University of Sussex
         department: School of Psychology
@@ -573,8 +573,6 @@ perchtold_cor |>
 #### Fitting the model
 
 @perchtold2019 also used multivariate linear regression to test whether three sub-strategies within the positive reinterpretation strategy (general positive aspects (`pos3`), worst-case comparison (`pos7`), disadvantage as advantage (`pos8`)) and three sub-strategies within the de-emphasizing category (alternative explanation (`rel10`), trivializing the problem (`rel11`), handing over responsibility (`rel14`)) are predictive of self-reported depressive experiences measured via the CES-D depression scale (`ads`). These results are reported in Table 2 of @perchtold2019.
-
-> AF NOTE: should we delete Q4 - see later?
 
 Several of the research questions that can be answered using multiple linear regression:
 
