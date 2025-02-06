@@ -163,13 +163,14 @@ references:
   - family: Field
     given: Andy P.
   edition: 2nd
-  issued: 2026
+  issued: in press
   key: Y39Y84RQ
   libraryID: 1
   note: "Citation Key: field_dsr2_2026"
   providerKey: 2509FBBE-5BB0-44C4-B119-6083A81ED673
   publisher: Sage
   publisher-place: London
+  status: in press
   rights: All rights reserved
   title: Discovering statistics using R and RStudio
   type: book
@@ -600,4 +601,24 @@ references:
   type: article-journal
   URL: "https://www.tandfonline.com/doi/full/10.3200/GNTP.169.3.281-292"
   volume: 169
+- id: field2017
+  author:
+  - family: Field
+    given: Andy P.
+  - family: Wilcox
+    given: Rand R.
+  container-title: Behaviour Research and Therapy
+  DOI: 10.1016/j.brat.2017.05.013
+  ISSN: 0005-7967
+  issued: 2017-11
+  key: T4SF6K72
+  libraryID: 1
+  page: 19-38
+  providerKey: 2509FBBE-5BB0-44C4-B119-6083A81ED673
+  rights: All rights reserved
+  title: "Robust statistical methods: A primer for clinical psychology
+    and experimental psychopathology researchers"
+  type: article-journal
+  volume: 98
+  WOS: 000413132300003
 ...
